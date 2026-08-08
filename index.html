@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gather & Taste | Recipes for slow, happy meals</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+	<style>
+		:root { --ink: #24352f; --muted: #66756e; --paper: #f7f4ec; --cream: #fffdf8; --sage: #dce7d7; --coral: #de795f; --line: #d9dfd4; }
+		* { box-sizing: border-box; }
+		body { margin: 0; color: var(--ink); background: var(--paper); font-family: "DM Sans", sans-serif; }
+		img { display: block; width: 100%; object-fit: cover; }
+		a { color: inherit; text-decoration: none; }
+		.wrap { width: min(1160px, calc(100% - 48px)); margin: auto; }
+		.topbar { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; border-bottom: 1px solid var(--line); }
+		.logo { font-family: "Playfair Display", serif; font-size: 1.45rem; font-weight: 700; }
+		.logo span { color: var(--coral); }
+		nav { display: flex; gap: 30px; color: var(--muted); font-size: .9rem; }
+		nav a:hover { color: var(--coral); }
+		.subscribe { border: 0; border-radius: 5px; padding: 12px 17px; color: white; background: var(--coral); font: inherit; font-size: .82rem; font-weight: 700; cursor: pointer; }
+		.subscribe:hover { background: #c7654e; }
+		.hero { display: grid; grid-template-columns: 1fr 1.08fr; gap: 68px; align-items: center; padding: 72px 0 86px; }
+		.eyebrow { color: var(--coral); font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+		h1, h2, h3 { font-family: "Playfair Display", serif; line-height: 1.08; margin: 0; }
+		h1 { max-width: 500px; margin-top: 18px; font-size: clamp(3rem, 6vw, 5.4rem); letter-spacing: -.04em; }
+		.intro { max-width: 440px; margin: 25px 0 31px; color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
+		.hero-link { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; }
+		.hero-link span { color: var(--coral); font-size: 1.35rem; transition: transform .2s; }
+		.hero-link:hover span { transform: translateX(4px); }
+		.hero-image { position: relative; }
+		.hero-image img { height: 540px; border-radius: 3px; }
+		.image-note { position: absolute; right: -23px; bottom: 25px; max-width: 190px; padding: 17px 19px; color: var(--ink); background: var(--sage); font-family: "Playfair Display", serif; font-size: 1.08rem; line-height: 1.25; }
+		.section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 26px; }
+		.section-head h2 { font-size: 2.1rem; }
+		.view-all { color: var(--coral); font-size: .84rem; font-weight: 700; }
+		.categories { padding: 34px 0 76px; border-top: 1px solid var(--line); }
+		.category-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+		.category { min-height: 140px; display: flex; align-items: end; padding: 20px; position: relative; overflow: hidden; color: white; }
+		.category::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 25%, rgba(0,0,0,.62)); }
+		.category img { position: absolute; inset: 0; height: 100%; transition: transform .35s; }
+		.category:hover img { transform: scale(1.06); }
+		.category h3 { position: relative; z-index: 1; font-size: 1.55rem; }
+		.recipes { padding: 0 0 88px; }
+		.recipe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+		.recipe img { height: 230px; margin-bottom: 17px; }
+		.tag { color: var(--coral); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+		.recipe h3 { margin-top: 8px; font-size: 1.55rem; }
+		.recipe p { margin: 10px 0 0; color: var(--muted); font-size: .88rem; line-height: 1.55; }
+		.newsletter { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; padding: 46px 54px; margin-bottom: 70px; background: var(--sage); }
+		.newsletter h2 { max-width: 440px; font-size: 2.3rem; }
+		.newsletter p { color: var(--muted); line-height: 1.6; }
+		.form { display: flex; gap: 8px; }
+		input { min-width: 0; flex: 1; border: 1px solid #bac8b7; border-radius: 4px; padding: 14px; background: var(--cream); font: inherit; }
+		footer { padding: 24px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; }
+		footer .wrap { display: flex; justify-content: space-between; }
+		@media (max-width: 760px) {
+			.wrap { width: min(100% - 32px, 560px); }
+			nav { display: none; }
+			.hero { grid-template-columns: 1fr; gap: 35px; padding: 48px 0 68px; }
+			h1 { font-size: 3.5rem; }
+			.hero-image img { height: 390px; }
+			.image-note { right: 12px; }
+			.category-list, .recipe-grid { grid-template-columns: 1fr 1fr; }
+			.category { min-height: 125px; }
+			.recipe:last-child { grid-column: span 2; }
+			.newsletter { grid-template-columns: 1fr; padding: 32px 24px; }
+			.form { flex-direction: column; }
+		}
+		@media (max-width: 440px) {
+			.subscribe { padding: 10px 12px; }
+			.category-list, .recipe-grid { grid-template-columns: 1fr; }
+			.recipe:last-child { grid-column: auto; }
+		}
+	</style>
+</head>
+<body>
+	<header class="wrap topbar">
+		<a class="logo" href="#top">Gather <span>&</span> Taste</a>
+		<nav aria-label="Main navigation"><a href="#recipes">Recipes</a><a href="#journal">Journal</a><a href="#about">About</a></nav>
+		<button class="subscribe" type="button">Get the newsletter</button>
+	</header>
+	<main id="top">
+		<section class="wrap hero">
+			<div><div class="eyebrow">The weekend table</div><h1>Good food, gathered slowly.</h1><p class="intro">Recipes for lingering lunches, weeknight wins, and the people who make every meal worth remembering.</p><a class="hero-link" href="#recipes">Explore the latest recipes <span aria-hidden="true">&#8594;</span></a></div>
+			<div class="hero-image"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=85" alt="Colorful roasted vegetables in a bowl"><div class="image-note">A bright bowl for brighter days.</div></div>
+		</section>
+		<section class="categories" id="recipes"><div class="wrap"><div class="section-head"><h2>What are you hungry for?</h2><a class="view-all" href="#recipes">Browse all recipes &rarr;</a></div><div class="category-list">
+			<a class="category" href="#recipes"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=600&q=80" alt="Fresh pasta with herbs"><h3>Comfort</h3></a>
+			<a class="category" href="#recipes"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Fresh salad with vegetables"><h3>Fresh & green</h3></a>
+			<a class="category" href="#recipes"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80" alt="Glazed doughnuts"><h3>Something sweet</h3></a>
+			<a class="category" href="#recipes"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80" alt="Roasted vegetables"><h3>One-pan</h3></a>
+		</div></div></section>
+		<section class="wrap recipes" id="journal"><div class="section-head"><h2>From the kitchen</h2><a class="view-all" href="#journal">Read the journal &rarr;</a></div><div class="recipe-grid">
+			<article class="recipe"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=80" alt="Creamy pasta with greens"><div class="tag">Weeknight dinner</div><h3>Silky lemon pasta with greens</h3><p>Twenty minutes, one pan, and enough brightness to make Tuesday feel like Friday.</p></article>
+			<article class="recipe"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80" alt="Colorful seasonal salad"><div class="tag">The good salad</div><h3>The salad you will make on repeat</h3><p>Crunchy, herby, and dressed with a sharp little vinaigrette.</p></article>
+			<article class="recipe"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80" alt="Freshly baked doughnuts"><div class="tag">Sunday baking</div><h3>Cardamom sugar doughnuts</h3><p>Soft in the middle, crisp at the edges, and best shared while warm.</p></article>
+		</div></section>
+		<section class="wrap newsletter" id="about"><div><div class="eyebrow">A little note from us</div><h2>Bring something delicious to your inbox.</h2></div><div><p>One seasonal recipe, one thoughtful story, and no unnecessary noise. Just enough inspiration for your next meal.</p><form class="form"><input type="email" placeholder="Your email address" aria-label="Your email address"><button class="subscribe" type="submit">Sign me up</button></form></div></section>
+	</main>
+	<footer><div class="wrap"><span>&copy; 2024 Gather & Taste</span><span>Made for sharing.</span></div></footer>
+</body>
+</html>
